@@ -37,7 +37,7 @@ sub htmlHead {
 
       html {
         height: 100%;
-        margin: 0.3rem;
+        margin: 0.5rem;
       }
 
       body {
@@ -153,6 +153,11 @@ sub htmlHead {
         align-items: center;
         gap: 1rem;
         margin: 2rem auto 3rem;
+      }
+
+      .main-menu-pc div {
+        display: flex;
+        gap: 1rem;
       }
 
       .main-menu-pc h3 {
@@ -814,14 +819,14 @@ sub linkcode1 {
 sub option_selector {
   my ($label, $onchange, $default, @options) = @_;
   my $id = $label; $id =~ s/\s+//g; $id = lc($id);
-  my $output = "&nbsp;&nbsp;&nbsp;<LABEL FOR=$id CLASS=offscreen>$label</LABEL>\n";
-  $output .= sprintf("<SELECT ID=%s NAME=%s SIZE=%d onchange=\"%s\">\n", $id, $id, @options + 0, $onchange);
+  my $output = "<label for=$id class='offscreen'>$label</label>\n";
+  $output .= sprintf("<select id=%s NAME=%s size=%d onchange=\"%s\">\n", $id, $id, @options + 0, $onchange);
   foreach (@options) {
     my($display, $value) = split(/;/);
     $value = $display unless $value;
-    $output .= sprintf("<OPTION %s VALUE=\"%s\">%s\n", ($value eq $default)?'SELECTED':'', $value, $display);
+    $output .= sprintf("<option %s value=\"%s\">%s\n", ($value eq $default)?'selected':'', $value, $display);
   }
-  return $output . "</SELECT>\n"
+  return $output . "</select>\n"
 }
 
 #*** selectables

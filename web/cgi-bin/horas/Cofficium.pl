@@ -158,7 +158,7 @@ if (($hora =~ /setup/) || (grep { $_ eq $hora } @horas)) {
 #generate HTML
 htmlHead($title, 2);
 print << "PrintTag";
-<body VLINK=$visitedlink LINK=$link onload="startup()">
+<body vlink=$visitedlink link=$link onload="startup()">
 <form action="$officium" method=post target=_self>
 PrintTag
 
@@ -235,26 +235,22 @@ PrintTag
 PrintTag
 }
 
-# TODO: replace with new widget
 #common widgets for main and hora
 if ($pmode =~ /(main|hora)/i) {
-  print "<P ALIGN=CENTER><I>";
+  print "<div class='horas-menu'>";
   print horas_menu($completed, $date1, $version, $lang2, $votive, $testmode);
-  print "</I></P>\n";
+  print "</div>\n";
 
   $votive ||= 'Hodie';
-  print "<P ALIGN=CENTER>";
+  print '<div class="selectables">';
   print selectables('generalc');
-  print "</P>\n";
+  print '</div>';
 
-  print "<P ALIGN=CENTER>";
-  print qq(\n<A HREF=# onclick="callbrevi(\'$date1\')">One version</A>\n);
-  print '&nbsp;' x 4;
-  print qq(\n<A HREF=# onclick="pset('parameters')">Options</A>\n);
-  print '&nbsp;' x 4;
-  print "\n";
+  print "<footer>";
+  print qq(\n<a href=# onclick="callbrevi(\'$date1\')">One version</a>\n);
+  print qq(\n<a href=# onclick="pset('parameters')">Options</a>\n);
   print bottom_links_menu();
-  print "</P>\n";
+  print "</footer>\n";
 
   if ($building && $buildscript) {
     $buildscript =~ s/[\n]+/\n/g;

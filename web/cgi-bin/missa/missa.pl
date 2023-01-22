@@ -202,9 +202,9 @@ if ($pmode =~ /(main|missa)/i) {
 &nbsp;&nbsp;&nbsp;
 <LABEL FOR=solemn>Solemn : </LABEL><INPUT ID=solemn TYPE=CHECKBOX NAME='solemn' $csolemn Value=1 onclick="parchange()">
 </I></P>
-<P ALIGN=CENTER>
-PrintTag
 
+PrintTag
+  print "<div class='selectables'>";
   print option_selector("Version", "parchange();", $version, @versions );
 
 #$testmode = 'Regular' unless $testmode;
@@ -214,7 +214,6 @@ PrintTag
 #  print option_selector("testmode", "parchange();", $testmode, qw(Regular Seasonal));
 #}
   my $propname = ($Propers) ? 'Full' : 'Propers';
-  print "&nbsp;&nbsp;&nbsp;";
   print htmlInput('lang2', $lang2, 'options', 'languages', , "parchange()" );
   @votive = ('Hodie;');
   if (opendir(DIR, "$datafolder/Latin/Votive")) {
@@ -223,7 +222,7 @@ PrintTag
     foreach (@a) { push(@votive, $_) if (s/\.txt//i); }
   }
   print option_selector("Votive", "parchange();", $votive, @votive );
-  print "</P>\n";
+  print "</div>\n";
   print qq(<P ALIGN=CENTER><FONT SIZE=+1>\n<A HREF=# onclick="hset('Propers')">$propname</A>\n</FONT></P>\n);
   print "<P ALIGN=CENTER><FONT SIZE=+1>\n" . bottom_links_menu() . "</FONT>\n</P>\n";
 }    

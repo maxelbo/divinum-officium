@@ -1,7 +1,7 @@
 sub bodybegin {
   my $onload = $officium ne 'Pofficium.pl' && ' onload="startup();"';
   return << "PrintTag";
-<body VLINK=$visitedlink LINK=$link $onload>
+<body vlink=$visitedlink link=$link $onload>
 <form action="$officium" method=post target=_self>
 PrintTag
 }

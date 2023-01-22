@@ -237,7 +237,6 @@ if ($command =~ /setup(.*)/i) {
     print "</table>\n";
   }
   
-  print "</main>\n";
   print "<footer>";
   print bottom_links_menu();
   print "</footer>\n";
