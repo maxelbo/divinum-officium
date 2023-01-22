@@ -186,7 +186,7 @@ if ($command =~ /kalendar/) {    # kalendar widget
 #generate HTML
 htmlHead("Divinum Officium " . ($hora || $command), 2);
 print bodybegin();
-
+print "<main>\n";
 if ($command =~ /setup(.*)/i) {
   $command = $1;
   print setuptable($command, "Divinum Officium setup");
@@ -194,7 +194,7 @@ if ($command =~ /setup(.*)/i) {
 } else {
   my $dayheadline = setheadline();
   print headline( $dayheadline, $comment, $daycolor);
-  $background = ($whitebground) ? "BGCOLOR=\"white\"" : "BACKGROUND=\"$htmlurl/horasbg.jpg\"";
+  $background = ($whitebground) && "style=' background-color: #ffffff;'";
 
   if ($horas[0] eq 'Plures') {
     print setplures();
@@ -214,28 +214,33 @@ if ($command =~ /setup(.*)/i) {
       horas($hora);
     }
     if ($officium ne 'Pofficium.pl' && @horas == 1) {
-      print par_c("<INPUT TYPE=SUBMIT VALUE='$hora persolut.' onclick='okbutton();'>");
+      print par_c("<input type=submit value='$hora persolut.' onclick='okbutton();'>");
     }
   } elsif ($officium ne 'Pofficium.pl') {
-    print par_c(mainpage());
+    print mainpage();
   }
 
-  print par_c('<I>' . horas_menu($completed, $date1, $version, $lang2, $votive, $testmode) . '</I>');
+  print '<div class="horas-menu">' . horas_menu($completed, $date1, $version, $lang2, $votive, $testmode) . '</div>';
 
   if ($officium ne 'Pofficium.pl') {
     $votive ||= 'Hodie';
-    print par_c(selectables('general'));
+    print '<div class="selectables">';
+    print selectables('general');
+    print '</div>';
   } else {
-    print par_c(pmenu());
+    print pmenu();
 
-    print "<TABLE ALIGN=CENTER BORDER=1>";
+    print "<table class='main-table' border=1>";
     print selectable_p('versions', $version, $date1, $version, $lang2, $votive, $testmode);
     print selectable_p('languages', $lang2, $date1, $version, $lang2, $votive, $testmode, 'Language 2');
     print selectable_p('votives', $votive, $date1, $version, $lang2, $votive, $testmode);
-    print "</TABLE>\n";
+    print "</table>\n";
   }
   
-  print par_c("\n" . bottom_links_menu());
+  print "</main>\n";
+  print "<footer>";
+  print bottom_links_menu();
+  print "</footer>\n";
   if ($building && $buildscript) { print buildscript($buildscript); }
 }
 

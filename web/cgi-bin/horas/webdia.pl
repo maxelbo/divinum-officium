@@ -20,39 +20,269 @@ sub htmlHead {
   print "Content-type: text/html; charset=utf-8\n\n";
   print << "PrintTag";
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<HTML><HEAD>
-  <META NAME="Resource-type" CONTENT="Document">
-  <META NAME="description" CONTENT="Divine Office">
-  <META NAME="keywords" CONTENT="Divine Office, Breviarium, Liturgy, Traditional, Zsolozsma">
-  <META NAME="Copyright" CONTENT="Like GNU">
-  <STYLE>
-    /* https://www.30secondsofcode.org/css/s/offscreen/ */
-    .offscreen {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-    h1, h2 {
-      text-align: center;
-      font-weight: normal;
-    }
-    h2 {
-      margin-top: 4ex;
-      color: maroon;
-      font-size: 112%;
-      font-weight: bold;
-      font-style: italic;
-    }
-  </STYLE>
-  <TITLE>$title</TITLE>
+<html>
+  <head>
+    <meta name="resource-type" content="document">
+    <meta name="description" content="Divine Office">
+    <meta name ="keywords" content="Divine Office, Breviarium, Liturgy, Traditional, Zsolozsma">
+    <meta name="copyright" content="Like GNU">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        height: 100%;
+        margin: 0.3rem;
+      }
+
+      body {
+        min-height: 100%;
+        background-color: #eaeaea;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* https://www.30secondsofcode.org/css/s/offscreen/ */
+      .offscreen {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      h1, h2 {
+        text-align: center;
+        font-weight: normal;
+      }
+
+      h2 {
+        margin-top: 4ex;
+        color: maroon;
+        font-size: 112%;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      a {
+        color: blue;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .header-day {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: 1rem auto;
+        padding: 0 0 1rem;
+        gap: 0.3rem;
+        border-bottom: 1px solid #333;
+      }
+
+      .header-day h3 {
+        font-size: 1rem;
+        margin: 0 auto 0.5rem;
+      }
+
+      .main-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.3rem;
+      }
+
+      .main-title h1 {
+        color: maroon; 
+        font-weight: bold; 
+        font-style: italic;
+        margin: 0;
+      }
+
+      .main-title h2 {
+        color: red;
+        font-weight: 500;
+        font-style: normal;
+        margin: 0;
+      }
+
+      .date {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 1rem auto;
+      }
+
+      .date a {
+        text-decoration: none;
+        font-size: 1.8rem;
+      }
+
+      #date {
+        height: 1.5rem;
+        text-align: center;
+      }
+
+      .date-button {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .main-menu-pc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem auto 3rem;
+      }
+
+      .main-menu-pc h3 {
+        color: maroon;
+        font-style: italic;
+      }
+
+      .date {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin: 0.2rem 0;
+      }
+
+      .horas-menu {
+        display: flex;
+        flex-flow: wrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem 1rem;
+        margin: 1rem auto;
+        padding: 0 5rem;
+        font-style: italic;
+        text-align: center;
+      }
+
+      .break {
+        flex-basis: 100%;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .pmenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem auto 0;
+      }
+
+      .main-table {
+        font-size: large; 
+        margin: 2rem auto;
+        text-align: center;
+      }
+
+      .main-table td {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.3rem;
+      }
+
+      td {
+        padding: 1rem;
+      }
+
+      .image-table-sp {
+        display: flex;
+        justify-content: center;
+        margin: 1rem auto 2rem;
+      }
+
+      .image-table-pc {
+        margin: 0 auto 3rem;
+      }
+
+      .image-table-pc td {
+        text-align: center;
+        color: maroon;
+        padding: 0;
+      }
+
+      .selectables {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 4rem 2rem;
+        text-align: center;
+      }
+
+      footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: auto auto 1rem;
+        padding: 2rem 2rem 0;
+        border-top: 1px solid #333;
+      }
+
+      .for-pc {
+        display: none;
+      }
+
+      \@media (min-width: 750px) {
+        .for-sp {
+          display: none;
+        }
+
+        .for-pc {
+          display: block;
+        }
+
+        .main-menu-pc {
+          flex-direction: row;
+          gap: 1rem;
+          margin: 2rem auto 1rem;
+          width: 550px;
+        }
+
+        .date {
+          gap: 0.5rem;
+        }
+        
+        .selectables {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 1rem;
+        }
+      }
+    </style>
 PrintTag
   if ($flag == 2) { horasjs(); }
-  print "</HEAD>";
+  print "</head>";
 }
 
 #*** htmlInput()
@@ -75,15 +305,15 @@ sub htmlInput {
 
   if ($parmode =~ /^label/i) {
     my $ilabel = $parvalue;
-    if ($parpar) { $ilabel = wrap($ilabel, $parpar, "<BR>\n"); }
+    if ($parpar) { $ilabel = wrap($ilabel, $parpar, "<br/>\n"); }
     $output .= "$ilabel";
-    $output .= "<INPUT TYPE=HIDDEN NAME=\'$parname\' VALUE=\'$parvalue\'>\n";
+    $output .= "<input type=hidden name=\'$parname\' value=\'$parvalue\'>\n";
   } elsif ($parmode =~ /entry/i) {
     $width = $parpar;
     if (!$width || $width == 0) { $width = 3; }
     my $jsfunc = '';
     if ($parfunc) { $jsfunc = "onchange=\"$parfunc;\""; }
-    $output .= "<INPUT TYPE=TEXT NAME=\'$parname\' ID=\'$parname\' $jsfunc SIZE=$width VALUE=\'$parvalue\'>\n";
+    $output .= "<input type=text name=\'$parname\' id=\'$parname\' $jsfunc size=$width value=\'$parvalue\'>\n";
   } elsif ($parmode =~ /^text/i) {
     my @size = split('x', $parpar);
     if (@size < 2) { @size = (3, 12); }
@@ -444,21 +674,21 @@ sub setcell {
       if ($officium =~ /Pofficium/i) {
         if ($hora =~ /Matutinum/i) {
           $text =~
-            s{%(.*?)%}{<A HREF="Pofficium.pl?date1=$date1&caller=$caller&command=prayLaudes&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">$q</A>}i;
+            s{%(.*?)%}{<a href="Pofficium.pl?date1=$date1&caller=$caller&command=prayLaudes&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">$q</a>}i;
         } elsif ($hora =~ /Vespera/i) {
           $text =~
-            s{%(.*?)%}{<A HREF="Pofficium.pl?date1=$date1&caller=1&command=prayVespera&version=$version&testmode=$testmode&lang2=$lang2&votive=C9">$q</A>}i;
+            s{%(.*?)%}{<a href="Pofficium.pl?date1=$date1&caller=1&command=prayVespera&version=$version&testmode=$testmode&lang2=$lang2&votive=C9">$q</a>}i;
         } elsif ($hora =~ /Laudes/i) {
           $text =~
-            s{%(.*?)%}{<A HREF="Pofficium.pl?date1=$date1&caller=1&command=prayMatutinum&version=$version&testmode=$testmode&lang2=$lang2&votive=C9">$q</A>}i;
+            s{%(.*?)%}{<a href="Pofficium.pl?date1=$date1&caller=1&command=prayMatutinum&version=$version&testmode=$testmode&lang2=$lang2&votive=C9">$q</a>}i;
         }
       } else {
         if ($hora =~ /Matutinum/i) {
-          $text =~ s{%(.*?)%}{<A HREF=# onclick="hset('Laudes');">$q</A>}i;
+          $text =~ s{%(.*?)%}{<a href=# onclick="hset('Laudes');">$q</a>}i;
         } elsif ($hora =~ /Vespera/i) {
-          $text =~ s{%(.*?)%}{<A HREF=# onclick="defunctorum('Vespera');">$q</A>}i;
+          $text =~ s{%(.*?)%}{<a href=# onclick="defunctorum('Vespera');">$q</a>}i;
         } elsif ($hora =~ /Laudes/i) {
-          $text =~ s{%(.*?)%}{<A HREF=# onclick="defunctorum('Matutinum');">$q</A>}i;
+          $text =~ s{%(.*?)%}{<a href=# onclick="defunctorum('Matutinum');">$q</a>}i;
         }
       }
     }
@@ -490,8 +720,8 @@ sub topnext_cell {
   if (@a > 2 && $expand !~ /skeleton/i) { 
     my $str = "<DIV ALIGN=right><FONT SIZE=1 COLOR=green>";
     if (columnsel($lang)) {
-      $str .= "<A HREF='#${hora}top'>Top</A>&nbsp;&nbsp;";
-      $str .= "<A HREF='#$hora" . ($searchind+1) . "'>Next</A>";
+      $str .= "<a href='#${hora}top'>Top</a>&nbsp;&nbsp;";
+      $str .= "<a href='#$hora" . ($searchind+1) . "'>Next</a>";
     } else {
       $str .= "$searchind";
     }
@@ -522,7 +752,7 @@ sub ante_post {
   my $colspan = ($only) ? '' : 'COLSPAN=2';
   print "<TR><TD $background VALIGN=TOP $colspan ALIGN=CENTER>\n";
   if ($0 =~ /missa/) {
-    print "<A HREF=\"mpopup.pl?popup=$title&rubrics=$rubrics&lang1=$lang1&lang2=$lang2\" TARGET=_NEW>$title</A>\n";
+    print "<a href=\"mpopup.pl?popup=$title&rubrics=$rubrics&lang1=$lang1&lang2=$lang2\" TARGET=_NEW>$title</a>\n";
     print "<FONT SIZE=1>Missam</FONT></TD></TR>";
   } else {
     print "<INPUT TYPE=RADIO NAME=link onclick='linkit(\"\$$title\", 0, \"Latin\");'>\n";
@@ -604,11 +834,11 @@ sub selectables {
     my $parvalue = eval($parvar);
     my $parlabel = $parname;
     $parname = substr($parvar, 1);
-    my $output = "<LABEL FOR=$parname CLASS=offscreen>$parlabel</LABEL>\n";
+    my $output = "<label for=$parname class=offscreen>$parlabel</label>\n";
     $output .= htmlInput($parname, $parvalue, $parmode, $parpar, 'parchange()', $parhelp);
     push(@output, $output);
   }
-  join('&nbsp;&nbsp;&nbsp;', @output);
+  join('', @output);
 }
 
 #*** selectable_p
@@ -617,7 +847,7 @@ sub selectable_p {
   my($dialog, $curvalue, $date1, $version, $lang2, $votive, $testmode, $title) = @_;
   $title ||= ucfirst($dialog);
   if ($dialog eq 'votives') { $curvalue ||= 'Hodie' }
-  my @output = ("<TR><TD ALIGN=CENTER>$title");
+  my @output = ("<tr><td>$title");
   foreach (getdialog($dialog)) { chomp;
     my($text,$name) = split(/\//);
     $name ||= $text;
@@ -628,9 +858,9 @@ sub selectable_p {
              . "&votive="
              . ($dialog eq 'votives' ? $name : $votive);
     my $colour = $curvalue eq $name ? 'red' : 'blue';
-    push(@output, qq(\n<A HREF="$href"><FONT COLOR=$colour>$text</FONT></A>));
+    push(@output, qq(\n<a href="$href" style='color: $colour;'>$text</a>));
   }
-  join('<BR>', @output) . "</TD></TR>\n";
+  join('', @output) . "</td></tr>\n";
 }
 
 sub horas_menu {
@@ -651,11 +881,11 @@ sub horas_menu {
       $onclick = qq(onclick="hset('$_');");
     }
     my $colour = $i <= $completed ? 'maroon' : 'blue' ;
-    $output .= qq(\n<A HREF=$href $onclick><FONT COLOR=$colour>$_</FONT></A>\n);
+    $output .= qq(\n<a style="color: $colour" href=$href $onclick>$_</a>\n);
     if (($0 =~ /Pofficium/ && $votive ne 'C9' && ($i == 2 || $i == 6)) || (($i == (@horas - 2)) && ($0 !~ /Cofficium/))) {
-      $output .= '<BR>';
+      $output .= '<hr class="break">';
     } else {
-      $output .= '&nbsp;&nbsp;';
+      $output .= '';
     }
   }
   $output =~ s/&nbsp;&nbsp;$//;
@@ -663,7 +893,6 @@ sub horas_menu {
 }
 
 sub bottom_links_menu {
-  join("&nbsp;&nbsp;&nbsp;&nbsp;\n",
-        map { "<A HREF=\"../../www/horas/Help/" . lcfirst($_) . ".html\" TARGET=\"_BLANK\">$_</A>\n";} 
-            qw(Versions Credits Download Rubrics Technical Help));
+  map { "<a href=\"../../www/horas/Help/" . lcfirst($_) . ".html\" target=\"_blank\">$_</a>\n";} 
+            qw(Versions Credits Download Rubrics Technical Help);
 }

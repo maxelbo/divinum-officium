@@ -158,14 +158,8 @@ if (($hora =~ /setup/) || (grep { $_ eq $hora } @horas)) {
 #generate HTML
 htmlHead($title, 2);
 print << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg" onload="startup();">
-<script>
-// https redirect
-if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
-    location.replace(`https:\${location.href.substring(location.protocol.length)}`);
-}
-</script>
-<FORM ACTION="$officium" METHOD=post TARGET=_self>
+<body VLINK=$visitedlink LINK=$link onload="startup()">
+<form action="$officium" method=post target=_self>
 PrintTag
 
 if ($command =~ /setup(.*)/is) {
@@ -184,7 +178,7 @@ if ($command =~ /setup(.*)/is) {
   headline($head);
 
   #eval($setup{'parameters'});
-  $background = ($whitebground) ? "BGCOLOR=\"white\"" : "BACKGROUND=\"$htmlurl/horasbg.jpg\"";
+  $background = ($whitebground) && "style='background-color: #ffffff'";
   horas($command);
   print << "PrintTag";
 <P ALIGN=CENTER>
@@ -199,39 +193,49 @@ PrintTag
   $command = "";
   $height = floor($screenheight * 4 / 12);
   $height2 = floor($height / 2);
-  $background =
-    ($whitebground)
-    ? "BGCOLOR=\"white\""
-    : "BACKGROUND=\"$htmlurl/horasbg.jpg\"";
+  $background = ($whitebground) && "style='background-color: #ffffff'";
   headline($title);
   print << "PrintTag";
-<P ALIGN=CENTER>
-<TABLE BORDER=0 HEIGHT=$height><TR>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Ordinarium</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Psalterium</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Proprium de Tempore</FONT></TD>
-
-</TR><TR><TD ALIGN=CENTER ROWSPAN=2>
-<IMG SRC="$htmlurl/breviarium.jpg" HEIGHT=$height ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/psalterium.jpg" HEIGHT=$height2 ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/tempore.jpg" HEIGHT=$height2 ALT=""></TD>
-</TR><TR>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/commune.jpg" HEIGHT=$height2 ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/sancti.jpg" HEIGHT=$height2 ALT=""></TD>
-</TR><TR>
-<TD ALIGN=CENTER><FONT COLOR=RED>$version</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Commune Sanctorum</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Proprium Sanctorum</FONT></TD>
-</TR></TABLE>
-<BR>
-</P>
+<div class="for-sp">
+  <div class="image-table-sp">
+    <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+  </div>
+</div>
+<div class="for-pc">
+  <table class="image-table-pc" border=0 height=$height>
+  <tr>
+    <td>Ordinarium</td>
+    <td>Psalterium</td>
+    <td>Proprium de Tempore</td>
+  </tr>
+  <tr>
+    <td rowspan=2>
+      <img src="$htmlurl/breviarium.jpg" height=$height alt="breviarium">
+      </td>
+    <td>
+      <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+    </td>
+    <td>
+      <img src="$htmlurl/tempore.jpg" height=$height2 alt="tempore">
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <img src="$htmlurl/commune.jpg" height=$height2 alt="commune"></td>
+    <td height=50%>
+    <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
+  </tr>
+  <tr>
+    <td style="color: red">$version</td>
+    <td>Commune Sanctorum</td>
+    <td>Proprium Sanctorum</td>
+  </tr>
+  </table>
+</div>
 PrintTag
 }
 
+# TODO: replace with new widget
 #common widgets for main and hora
 if ($pmode =~ /(main|hora)/i) {
   print "<P ALIGN=CENTER><I>";
@@ -276,8 +280,14 @@ print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=officium VALUE="$officium">
 <INPUT TYPE=HIDDEN NAME=browsertime VALUE="$browsertime">
 <INPUT TYPE=HIDDEN NAME=compare VALUE=1>
-</FORM>
-</BODY></HTML>
+</form>
+<script>
+  // https redirect
+  if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
+      location.replace(`https:\${location.href.substring(location.protocol.length)}`);
+  }
+</script>
+</body></html>
 PrintTag
 
 #*** hedline($head) prints headlibe for main and pray
@@ -308,17 +318,25 @@ sub headline {
   }
   print "</TR></TABLE></CENTER>\n";
   print << "PrintTag";
-<P ALIGN=CENTER>
-<FONT COLOR=MAROON SIZE=+1><B><I>$head</I></B></FONT>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<LABEL FOR=date CLASS=offscreen>Date</LABEL>
-<INPUT TYPE=TEXT ID=date NAME=date VALUE="$date1" SIZE=10>
-<A HREF=# onclick="prevnext(-1)">&darr;</A>
-<INPUT TYPE=submit NAME=SUBMIT VALUE=" " onclick="parchange();">
-<A HREF=# onclick="prevnext(1)">&uarr;</A>
-&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="callkalendar();">Ordo</A>
-</P>
+<div class="main-menu-pc">
+  <h3>$head</h3>
+  <div class="date">
+    <a href=# onclick="prevnext(-1)">
+      <span class="material-symbols-outlined">
+        arrow_back
+      </span>
+    </a>
+    <label for=date class=offscreen>Date</label>
+    <input type=text id=date name=date value="$date1" size=10>
+    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <a href=# onclick="prevnext(1)">
+      <span class="material-symbols-outlined">
+        arrow_forward
+      </span>
+    </a>
+  </div>
+  <a href=# onclick="callkalendar()">Ordo</a>
+</div>
 PrintTag
 }
 

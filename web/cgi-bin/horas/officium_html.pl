@@ -1,49 +1,64 @@
 sub bodybegin {
   my $onload = $officium ne 'Pofficium.pl' && ' onload="startup();"';
   return << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg"$onload>
-<script>
-// https redirect
-if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
-    location.replace(`https:\${location.href.substring(location.protocol.length)}`);
-}
-</script>
-<FORM ACTION="$officium" METHOD=post TARGET=_self>
+<body VLINK=$visitedlink LINK=$link $onload>
+<form action="$officium" method=post target=_self>
 PrintTag
 }
 
 #*** headline($head) prints headline for main and pray
 sub headline {
   my ($day, $comment, $color) = @_;
-  my $output = par_c("<FONT COLOR=$color>$day<BR></FONT>\n$comment");
+  my $output = "<div class='header-day'><span style='color: $color'>$day</span>\n$comment</div>";
   $output .= << "PrintTag";
-<H1>
-<FONT COLOR=MAROON SIZE=+1><B><I>Divinum Officium</I></B></FONT>&nbsp;
-<FONT COLOR=RED SIZE=+1>$version</FONT>
-</H1>
+<div class="main-title">
+  <h1>Divinum Officium</h1>
+  <h2>$version</h2>
+</div>
 PrintTag
   if ($officium ne 'Pofficium.pl') {
-    $output .= par_c(<< "PrintTag");
-<A HREF=# onclick="callcompare()">Compare</A>
-&nbsp;&nbsp;&nbsp;<A HREF=# onclick="callmissa();">Sancta Missa</A>
-&nbsp;&nbsp;&nbsp;
-<LABEL FOR=date CLASS=offscreen>Date</LABEL>
-<INPUT TYPE=TEXT ID=date NAME=date VALUE="$date1" SIZE=10>
-<A HREF=# onclick="prevnext(-1)">&darr;</A>
-<INPUT TYPE=submit NAME=SUBMIT VALUE=" " onclick="parchange();">
-<A HREF=# onclick="prevnext(1)">&uarr;</A>
-&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="callkalendar();">Ordo</A>
-&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="pset('parameters')">Options</A>
+    $output .= << "PrintTag";
+<div class="main-menu-pc">
+  <div>
+    <a href=# onclick="callcompare()">Compare</a>
+    <a href=# onclick="callmissa()">Sancta Missa</a>
+  </div>
+  <div class="date">
+    <a href=# onclick="prevnext(-1)">
+      <span class="material-symbols-outlined">
+        arrow_back
+      </span>
+    </a>
+    <label for=date class=offscreen>Date</label>
+    <input type=text id=date name=date value="$date1" size=10>
+    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <a href=# onclick="prevnext(1)">
+      <span class="material-symbols-outlined">
+        arrow_forward
+      </span>
+    </a>
+  </div>
+  <div>
+    <a href=# onclick="callkalendar()">Ordo</a>
+    <a href=# onclick="pset('parameters')">Options</a>
+  </div>
+</div>
 PrintTag
   } else {
-    $output .= par_c(<< "PrintTag");
-<A HREF="Pofficium.pl?date1=$date1&command=prev&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
-&darr;</A>
-$date1
-<A HREF="Pofficium.pl?date1=$date1&command=next&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
-&uarr;</A>
+    $output .= << "PrintTag";
+    <div class="date">
+      <a href="Pofficium.pl?date1=$date1&command=prev&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
+        <span class="material-symbols-outlined">
+          arrow_back
+        </span>
+      </a>
+      <p>$date1</p>
+      <a href="Pofficium.pl?date1=$date1&command=next&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
+        <span class="material-symbols-outlined">
+          arrow_forward
+        </span>
+      </a>
+    </div>
 PrintTag
   }
 }
@@ -52,27 +67,42 @@ sub mainpage {
   my $height = floor($screenheight * 4 / 14);
   my $height2 = floor($height / 2);
   return << "PrintTag";
-<TABLE BORDER=0 HEIGHT=$height><TR>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Ordinarium</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Psalterium</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Proprium de Tempore</FONT></TD>
-</TR><TR><TD ALIGN=CENTER ROWSPAN=2>
-<IMG SRC="$htmlurl/breviarium.jpg" HEIGHT=$height ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/psalterium.jpg" HEIGHT=$height2 ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/tempore.jpg" HEIGHT=$height2 ALT=""></TD>
-</TR><TR>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/commune.jpg" HEIGHT=$height2 ALT=""></TD>
-<TD HEIGHT=50% VALIGN=MIDDLE ALIGN=CENTER>
-<IMG SRC="$htmlurl/sancti.jpg" HEIGHT=$height2 ALT=""></TD>
-</TR><TR>
-<TD ALIGN=CENTER><FONT COLOR=RED></FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Commune Sanctorum</FONT></TD>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>Proprium Sanctorum</FONT></TD>
-</TR></TABLE>
-<BR>
+<div class="for-sp">
+  <div class="image-table-sp">
+    <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+  </div>
+</div>
+<div class="for-pc">
+  <table class="image-table-pc" border=0 height=$height>
+  <tr>
+    <td>Ordinarium</td>
+    <td>Psalterium</td>
+    <td>Proprium de Tempore</td>
+  </tr>
+  <tr>
+    <td rowspan=2>
+      <img src="$htmlurl/breviarium.jpg" height=$height alt="breviarium">
+      </td>
+    <td>
+      <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+    </td>
+    <td>
+      <img src="$htmlurl/tempore.jpg" height=$height2 alt="tempore">
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <img src="$htmlurl/commune.jpg" height=$height2 alt="commune"></td>
+    <td height=50%>
+    <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
+  </tr>
+  <tr>
+    <td style="color: red"></td>
+    <td>Commune Sanctorum</td>
+    <td>Proprium Sanctorum</td>
+  </tr>
+  </table>
+</div>
 PrintTag
 }
 
@@ -106,10 +136,17 @@ SubmitTag
 # for Pofficium Options Sancta Missa Ordo
 sub pmenu {
   return << "PrintTag";
-<A HREF="Pofficium.pl?date1=$date1&command=setupparameters&pcommand=$command&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
-Options</A>&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="callmissa();">Sancta Missa</A>&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="callkalendar();">Ordo</A>
+<div class="pmenu">
+  <a href="Pofficium.pl?date1=$date1&command=setupparameters&pcommand=$command&version=$version&testmode=$testmode&lang2=$lang2&votive=$votive">
+    Options
+  </a>
+  <a href=# onclick="callmissa();">
+    Sancta Missa
+  </a>
+  <a href=# onclick="callkalendar();">
+    Ordo
+  </a>
+</div>
 PrintTag
 }
 
@@ -133,8 +170,15 @@ sub bodyend {
 <INPUT TYPE=HIDDEN NAME=compare VALUE=0>
 <INPUT TYPE=HIDDEN NAME='notes' VALUE="$notes">
 <INPUT TYPE=HIDDEN NAME='plures' VALUE='$plures'>
-</FORM>
-</BODY></HTML>
+</form>
+<script>
+  // https redirect
+  if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
+      location.replace(`https:\${location.href.substring(location.protocol.length)}`);
+  }
+</script>
+</body>
+</html>
 PrintTag
 }
 

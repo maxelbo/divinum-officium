@@ -28,7 +28,7 @@ sub horas {
     $hora = 'Vespera';
     $head = 'Ad Vesperas';
   }
-  print "<H2 ID='${hora}top'>$head</H2>\n" if ($0 !~ /Cofficium/);
+  print "<h2 id='${hora}top'>$head</h2>\n" if ($0 !~ /Cofficium/);
   our $canticum = 0;
   our $reciteindex = 0;
   our $recitelimit = 0;
