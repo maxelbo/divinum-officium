@@ -163,9 +163,10 @@ sub htmlHead {
       .main-menu-pc h3 {
         color: maroon;
         font-style: italic;
+        margin: 0;
       }
 
-      .date {
+      .main-menu-pc .date {
         display: flex;
         gap: 1rem;
         justify-content: center;
@@ -273,7 +274,7 @@ sub htmlHead {
           width: 550px;
         }
 
-        .date {
+        .main-menu-pc .date {
           gap: 0.5rem;
         }
         

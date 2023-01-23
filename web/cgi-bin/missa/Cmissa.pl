@@ -164,11 +164,12 @@ if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com
 PrintTag
 
 if ($command !~ /setup/i) {
-  print "<P ALIGN=CENTER>";
+  print '<div class="selectables">';
   print option_selector("Version 1", "parchange();", $version1, @versions );
   print option_selector("lang1", "parchange();", $lang1, qw(Latin English));
   print option_selector("lang2", "parchange();", $lang2, qw(Latin English));
   print option_selector("Version 2", "parchange();", $version2, @versions );
+  print '</div>';
 }
 
 if ($command =~ /setup(.*)/is) {
@@ -202,7 +203,7 @@ PrintTag
   $command = "";
   $height = floor($screenheight * 4 / 12);
   $height2 = floor($height / 2);
-  $background = ($whitebground) ? "BGCOLOR=\"white\"" : "BACKGROUND=\"$htmlurl/horasbg.jpg\"";
+  $background = ($whitebground) && "style='background-color: #ffffff'";
   headline($title);
   print << "PrintTag";
 <P ALIGN=CENTER>
@@ -269,15 +270,24 @@ sub headline {
   $headline =~ s{!(.*)}{$1}s;
   print "<P ALIGN=CENTER>" . "<FONT COLOR=$daycolor>$headline</FONT>" . "<BR>$comment</P>\n";
   print << "PrintTag";
-<P ALIGN=CENTER>
-<FONT COLOR=MAROON SIZE=+1><B><I>$head</I></B></FONT>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<LABEL FOR=date CLASS=offscreen>Date</LABEL>
-<INPUT ID=date TYPE=TEXT NAME=date VALUE="$date1" SIZE=10>
-<A HREF=# onclick="prevnext(-1)">&darr;</A>
-<INPUT TYPE=submit NAME=SUBMIT VALUE=" " onclick="parchange();">
-<A HREF=# onclick="prevnext(1)">&uarr;</A>
-</P>
+<div class="main-menu-pc">
+  <h3>$head</h3>
+  <div class="date">
+    <a href=# onclick="prevnext(-1)">
+      <span class="material-symbols-outlined">
+        arrow_back
+      </span>
+    </a>
+    <label for=date class=offscreen>Date</label>
+    <input type=text id=date name=date value="$date1" size=10>
+    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <a href=# onclick="prevnext(1)">
+      <span class="material-symbols-outlined">
+        arrow_forward
+      </span>
+    </a>
+  </div>
+</div>
 PrintTag
 }
 
