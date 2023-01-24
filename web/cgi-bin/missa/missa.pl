@@ -250,26 +250,39 @@ PrintTag
 sub headline {
   my $head = shift;
   my $numsel = setmissanumber();
-  $numsel = "<BR><BR>$numsel<BR>" if $numsel;
+  $numsel = "<div class='numsel'>$numsel</div>" if $numsel;
   $headline =~ s{!(.*)}{<FONT SIZE=1>$1</FONT>}s;
   print << "PrintTag";
-<P ALIGN=CENTER><FONT COLOR=$daycolor>$headline<BR></FONT>
-$comment<BR><BR>
-<FONT COLOR=MAROON SIZE=+1><B><I>$head</I></B></FONT><P>
-<P ALIGN=CENTER><A HREF=# onclick="callcompare()">Compare</A>
-&nbsp;&nbsp;&nbsp;<A HREF=# onclick="callofficium();">Divinum Officium</A>
-&nbsp;&nbsp;&nbsp;
-<LABEL FOR=date CLASS=offscreen>Date</LABEL>
-<INPUT ID=date TYPE=TEXT NAME=date VALUE="$date1" SIZE=10>
-<A HREF=# onclick="prevnext(-1)">&darr;</A>
-<INPUT TYPE=submit NAME=SUBMIT VALUE=" " onclick="parchange();">
-<A HREF=# onclick="prevnext(1)">&uarr;</A>
-&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="callkalendar();">Ordo</A>
-&nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="pset('parameters')">Options</A>
+<div class='header-day'><span style='color:$daycolor'>$headline</span>\n$comment</div>
+<div class="main-title">
+  <h1>$head</h1>
+</div>
+<div class="main-menu-pc">
+  <div>
+    <a href=# onclick="callcompare()">Compare</a>
+    <a href=# onclick="callofficium()">Divinum Officium</a>
+  </div>
+  <div class="date">
+    <a href=# onclick="prevnext(-1)">
+      <span class="material-symbols-outlined">
+        arrow_back
+      </span>
+    </a>
+    <label for=date class=offscreen>Date</label>
+    <input type=text id=date name=date value="$date1" size=10>
+    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <a href=# onclick="prevnext(1)">
+      <span class="material-symbols-outlined">
+        arrow_forward
+      </span>
+    </a>
+  </div>
+  <div>
+    <a href=# onclick="callkalendar()">Ordo</a>
+    <a href=# onclick="pset('parameters')">Options</a>
+  </div>
+</div>
 $numsel
-</P>
 PrintTag
 }
 

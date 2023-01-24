@@ -174,6 +174,12 @@ sub htmlHead {
         margin: 0.2rem 0;
       }
 
+      .numsel {
+        display: flex;
+        justify-content: center;
+        margin: -0.5rem auto 1rem;
+      }
+
       .horas-menu {
         display: flex;
         flex-flow: wrap;
