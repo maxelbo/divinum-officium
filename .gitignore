@@ -10,3 +10,4 @@ docker-compose.override.yml
 
 # Generated files
 standalone/tools/epubgen2/output
+web/www/.DS_Store
