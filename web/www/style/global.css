@@ -1,0 +1,57 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  margin: 0.5rem;
+}
+
+body {
+  min-width: 100%;
+  background-color: #eaeaea;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: blue;
+}
+
+button {
+  cursor: pointer;
+}
+
+.for-pc {
+  display: none;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  padding: 2rem 2rem 0;
+  border-top: 1px solid #333;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 900px;
+}
+
+@media (min-width: 750px) {
+  .for-sp {
+    display: none;
+  }
+
+  .for-pc {
+    display: block;
+  }
+}

@@ -1,0 +1,263 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0.5rem;
+}
+
+body {
+  min-height: 100%;
+  background-color: #eaeaea;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* https://www.30secondsofcode.org/css/s/offscreen/ */
+.offscreen {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-weight: normal;
+}
+
+h2 {
+  margin-top: 4ex;
+  color: maroon;
+  font-size: 112%;
+  font-weight: bold;
+  font-style: italic;
+}
+
+a {
+  color: blue;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0 0 1rem;
+  gap: 0.3rem;
+  border-bottom: 1px solid #333;
+}
+
+.header-day h3 {
+  font-size: 1rem;
+  margin: 0 auto 0.5rem;
+}
+
+.main-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.main-title h1 {
+  color: maroon;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+
+.main-title h2 {
+  color: red;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+
+.date a {
+  text-decoration: none;
+  font-size: 1.8rem;
+}
+
+#date {
+  height: 1.5rem;
+  text-align: center;
+}
+
+.date-button {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.main-menu-pc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto 3rem;
+}
+
+.main-menu-pc div {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-menu-pc h3 {
+  color: maroon;
+  font-style: italic;
+  margin: 0;
+}
+
+.main-menu-pc .date {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2rem 0;
+}
+
+.numsel {
+  display: flex;
+  justify-content: center;
+  margin: -0.5rem auto 1rem;
+}
+
+.horas-menu {
+  display: flex;
+  flex-flow: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 1rem;
+  margin: 1rem auto;
+  padding: 0 5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pmenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto 0;
+}
+
+.main-table {
+  font-size: large;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.main-table td {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+td {
+  padding: 1rem;
+}
+
+.image-table-sp {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto 2rem;
+}
+
+.image-table-pc {
+  margin: 0 auto 3rem;
+}
+
+.image-table-pc td {
+  text-align: center;
+  color: maroon;
+  padding: 0;
+}
+
+.selectables {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 4rem 2rem;
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto auto 1rem;
+  padding: 2rem 2rem 0;
+  border-top: 1px solid #333;
+}
+
+.for-pc {
+  display: none;
+}
+
+@media (min-width: 750px) {
+  .for-sp {
+    display: none;
+  }
+
+  .for-pc {
+    display: block;
+  }
+
+  .main-menu-pc {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 2rem auto 1rem;
+    width: 550px;
+  }
+
+  .main-menu-pc .date {
+    gap: 0.5rem;
+  }
+
+  .selectables {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
