@@ -1,3 +1,10 @@
+:root {
+  --red: #d94b58;
+  --blue: #00639b;
+  --maroon: #7d0000;
+  --background: #eaeaea;
+}
+
 html,
 body {
   margin: 0;
@@ -11,7 +18,7 @@ html {
 
 body {
   min-width: 100%;
-  background-color: #eaeaea;
+  background-color: var(--background);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -22,7 +29,12 @@ body {
 }
 
 a {
-  color: blue;
+  color: var(--blue);
+}
+
+b,
+strong {
+  font-weight: bolder;
 }
 
 button {

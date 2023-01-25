@@ -24,14 +24,14 @@ sub vernaculars {
 sub liturgical_color {
   $_ = shift;
   my($commune) = @_;
-  return 'blue' if ($commune && $commune =~ /(C1[0-9])/);
-  return 'red' if (/(Vigilia Pentecostes|Quattuor Temporum Pentecostes|Martyr)/i);
-  return 'grey' if (/(Defunctorum|Parasceve|Morte)/i);
-  return 'black' if (/^In Vigilia Ascensionis/);
-  return 'purple' if (/(Vigilia|Quattuor|Rogatio|Passion|Palmis|gesim|(?:Majoris )?Hebdomadæ(?: Sanctæ)?|Sabbato Sancto|Dolorum|Ciner|Adventus)/i);
-  return 'black' if (/(Conversione|Dedicatione|Cathedra|oann|Pasch|Confessor|Ascensio|Cena)/i);
-  return 'green' if (/(Pentecosten|Epiphaniam|post octavam)/i);
-  return 'red' if (/(Pentecostes|Evangel|Innocentium|Sanguinis|Cruc|Apostol)/i);
-  return 'black'
+  return '#00639b' if ($commune && $commune =~ /(C1[0-9])/); # blue
+  return '#d94b58' if (/(Vigilia Pentecostes|Quattuor Temporum Pentecostes|Martyr)/i); # red
+  return '#8281a0' if (/(Defunctorum|Parasceve|Morte)/i); # grey
+  return '#333333' if (/^In Vigilia Ascensionis/); # black
+  return '#9a77cf' if (/(Vigilia|Quattuor|Rogatio|Passion|Palmis|gesim|(?:Majoris )?Hebdomadæ(?: Sanctæ)?|Sabbato Sancto|Dolorum|Ciner|Adventus)/i); # purple
+  return '#333333' if (/(Conversione|Dedicatione|Cathedra|oann|Pasch|Confessor|Ascensio|Cena)/i); # black
+  return '#009192' if (/(Pentecosten|Epiphaniam|post octavam)/i); # green
+  return '#d94b58' if (/(Pentecostes|Evangel|Innocentium|Sanguinis|Cruc|Apostol)/i); # red
+  return '#333333' # black
 }
 1;

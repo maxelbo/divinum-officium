@@ -28,29 +28,9 @@ sub htmlHead {
     <meta name="copyright" content="Like GNU">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>$title</title>
+    <link rel="stylesheet" href="../../www/style/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        height: 100%;
-        margin: 0.5rem;
-      }
-
-      body {
-        min-height: 100%;
-        background-color: #eaeaea;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
       
       /* https://www.30secondsofcode.org/css/s/offscreen/ */
       .offscreen {
@@ -71,18 +51,10 @@ sub htmlHead {
 
       h2 {
         margin-top: 4ex;
-        color: maroon;
+        color: var(--maroon);
         font-size: 112%;
         font-weight: bold;
         font-style: italic;
-      }
-
-      a {
-        color: blue;
-      }
-
-      button {
-        cursor: pointer;
       }
 
       .header-day {
@@ -109,14 +81,14 @@ sub htmlHead {
       }
 
       .main-title h1 {
-        color: maroon; 
+        color: var(--maroon);
         font-weight: bold; 
         font-style: italic;
         margin: 0;
       }
 
       .main-title h2 {
-        color: red;
+        color: var(--red);
         font-weight: 500;
         font-style: normal;
         margin: 0;
@@ -161,7 +133,7 @@ sub htmlHead {
       }
 
       .main-menu-pc h3 {
-        color: maroon;
+        color: var(--maroon);
         font-style: italic;
         margin: 0;
       }
@@ -237,7 +209,7 @@ sub htmlHead {
 
       .image-table-pc td {
         text-align: center;
-        color: maroon;
+        color: var(--maroon);
         padding: 0;
       }
 
@@ -250,29 +222,8 @@ sub htmlHead {
         text-align: center;
       }
 
-      footer {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: auto auto 1rem;
-        padding: 2rem 2rem 0;
-        border-top: 1px solid #333;
-      }
-
-      .for-pc {
-        display: none;
-      }
-
       \@media (min-width: 750px) {
-        .for-sp {
-          display: none;
-        }
-
-        .for-pc {
-          display: block;
-        }
-
+        
         .main-menu-pc {
           flex-direction: row;
           gap: 1rem;
@@ -892,7 +843,7 @@ sub horas_menu {
     } else {
       $onclick = qq(onclick="hset('$_');");
     }
-    my $colour = $i <= $completed ? 'maroon' : 'blue' ;
+    my $colour = $i <= $completed ? 'var(--maroon)' : 'var(--blue)' ;
     $output .= qq(\n<a style="color: $colour" href=$href $onclick>$_</a>\n);
     if (($0 =~ /Pofficium/ && $votive ne 'C9' && ($i == 2 || $i == 6)) || (($i == (@horas - 2)) && ($0 !~ /Cofficium/))) {
       $output .= '<hr class="break">';
