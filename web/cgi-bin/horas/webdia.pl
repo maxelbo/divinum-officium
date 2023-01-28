@@ -117,8 +117,15 @@ sub htmlHead {
         width: 1.5rem;
         height: 1.5rem;
         background-color: var(--background);
-        border: 1px solid var(--black);
         border-radius: 0.2rem;
+      }
+
+      .date-button:hover {
+        opacity: 0.8;
+      }
+
+      .date-button:focus {
+        border-style: inset;
       }
 
       .main-menu-pc {

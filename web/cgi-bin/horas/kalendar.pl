@@ -81,7 +81,7 @@ sub kalendar_entry {
     ) ? split(';;', "Scriptura: $scriptura{Rank}")
     : (exists($scriptura{Rank})) ? split(';;', "Tempora: $scriptura{Rank}")
     : splice(@c2, @c2);
-  my $smallgray = "1 #946444";
+  my $smallgray = "1 #844444";
   my($c1,$c2) = ('','');
 
   if (@c1) {

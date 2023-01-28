@@ -69,7 +69,7 @@ sub mainpage {
   return << "PrintTag";
 <div class="for-sp">
   <div class="image-table-sp">
-    <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+    <img src="$htmlurl/psalterium.png" height=$height2 alt="psalterium">
   </div>
 </div>
 <div class="for-pc">
@@ -81,20 +81,20 @@ sub mainpage {
   </tr>
   <tr>
     <td rowspan=2>
-      <img src="$htmlurl/breviarium.jpg" height=$height alt="breviarium">
+      <img src="$htmlurl/breviarium.png" height=$height alt="breviarium">
       </td>
     <td>
-      <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+      <img src="$htmlurl/psalterium.png" height=$height2 alt="psalterium">
     </td>
     <td>
-      <img src="$htmlurl/tempore.jpg" height=$height2 alt="tempore">
+      <img src="$htmlurl/tempore.png" height=$height2 alt="tempore">
     </td>
   </tr>
   <tr>
     <td>
-    <img src="$htmlurl/commune.jpg" height=$height2 alt="commune"></td>
+    <img src="$htmlurl/commune.png" height=$height2 alt="commune"></td>
     <td height=50%>
-    <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
+    <img src="$htmlurl/sancti.png" height=$height2 alt="sancti"></td>
   </tr>
   <tr>
     <td style="color: var(--red)"></td>
