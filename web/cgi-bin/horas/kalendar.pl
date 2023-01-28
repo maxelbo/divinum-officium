@@ -81,7 +81,7 @@ sub kalendar_entry {
     ) ? split(';;', "Scriptura: $scriptura{Rank}")
     : (exists($scriptura{Rank})) ? split(';;', "Tempora: $scriptura{Rank}")
     : splice(@c2, @c2);
-  my $smallgray = "1 maroon";
+  my $smallgray = "1 #946444";
   my($c1,$c2) = ('','');
 
   if (@c1) {
@@ -203,7 +203,7 @@ $title = "Ordo: $monthnames[$kmonth-1] $kyear";
 #*** generate HTML
 htmlHead($title, 2);
 print << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg" >
+<BODY VLINK=$visitedlink LINK=$link >
 <script>
 // https redirect
 if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
@@ -228,19 +228,19 @@ PrintTag
 for (my $i = $kyear - 9; $i <= $kyear + 10; $i++) {
   $yn = sprintf("%04i", $i);
   if ($i == $year) {
-    print "<A HREF=# onclick=\"callbrevi();\"><FONT COLOR=maroon>Hodie</FONT></A>&nbsp;&nbsp;&nbsp;\n";
+    print "<a href=# style='color: var(--maroon)' onclick=\"callbrevi();\">Hodie</a>&nbsp;&nbsp;&nbsp;\n";
   }
-  print "<A HREF=# onclick=\"setky($yn)\">$yn</A>&nbsp;&nbsp;&nbsp;\n";
+  print "<a href=# onclick=\"setky($yn)\">$yn</a>&nbsp;&nbsp;&nbsp;\n";
 }
 
 print "<BR><BR></FONT>\n";
 print "$ver[0]"; print " / $ver[1]" if ($compare);
-print " : <FONT COLOR=MAROON SIZE=+1><B><I>$title</I></B></FONT>\n";
+print " : <span style='color: var(--maroon)'><b><i>$title</i></b></span>\n";
 print "<BR><BR>\n";
 
 for ($i = 1; $i <= 12; $i++) {
   $mn = substr($monthnames[$i - 1], 0, 3);
-  print "<A HREF=# onclick=\"setkm($i)\">$mn</A>\n";
+  print "<a href=# onclick=\"setkm($i)\">$mn</a>\n";
   if ($i < 12) { print "&nbsp;&nbsp;&nbsp;\n" }
 }
 print << "PrintTag";
@@ -281,8 +281,8 @@ print "<P ALIGN=CENTER>\n" . bottom_links_menu() . "</P>\n";
 # $testmode = 'Regular' unless $testmode;
 # print option_selector("testmode", "document.forms[0].submit();", $testmode, qw(Regular Seasonal));
 if ($savesetup > 1) { print "&nbsp;&nbsp;&nbsp;<A HREF=# onclick=\"readings();\">Readings</A>"; }
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT></P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
 print << "PrintTag";
 </FORM>
 </BODY></HTML>
