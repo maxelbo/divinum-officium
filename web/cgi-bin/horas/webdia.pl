@@ -116,6 +116,9 @@ sub htmlHead {
       .date-button {
         width: 1.5rem;
         height: 1.5rem;
+        background-color: var(--background);
+        border: 1px solid var(--black);
+        border-radius: 0.2rem;
       }
 
       .main-menu-pc {
@@ -572,27 +575,27 @@ sub setcross {
   if (CGI::user_agent("BlackBerry")) {
     # Not enough Unicode for what we really want, below.  Fake it.
     # cross type 3: COPTIC SMALL LETTER DEI
-    $csubst = "<span style='color:red; font-size:1.25em'>&#x03EF;</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>&#x03EF;</span>";
     $line =~ s/\+\+\+/$csubst/g;
 
     # Cross type 2: Latin Cross
-    $csubst = "<span style='color:red; font-size:1.25em'>&#x271D;&#xFE0E;</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>&#x271D;&#xFE0E;</span>";
     $line =~ s/\+\+/$csubst/g;
 
     # Cross type 1: PLUS SIGN
-    $csubst = "<span style='color:red; font-size:1.25em'>+</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>+</span>";
     $line =~ s/ \+ / $csubst /g;
   } else {
     # Cross type 3: Outlined Greek Cross
-    $csubst = "<span style='color:red; font-size:1.25em'>&#x2719;&#xFE0E;</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>&#x2719;&#xFE0E;</span>";
     $line =~ s/\+\+\+/$csubst/g;
 
     # Cross type 2: Greek Cross
-    $csubst = "<span style='color:red; font-size:1.25em'>+︎</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>+︎</span>";
     $line =~ s/\+\+/$csubst/g;
 
     # cross type 1: Maltese Cross
-    $csubst = "<span style='color:red; font-size:1.25em'>✠</span>";
+    $csubst = "<span style='color:var(--red); font-size:1.25em'>✠</span>";
     $line =~ s/ \+ / $csubst /g;
   }
   return $line;
@@ -820,7 +823,7 @@ sub selectable_p {
              . ($dialog eq 'languages' ? $name : $lang2)
              . "&votive="
              . ($dialog eq 'votives' ? $name : $votive);
-    my $colour = $curvalue eq $name ? 'red' : 'blue';
+    my $colour = $curvalue eq $name ? 'var(--red)' : 'var(--blue)';
     push(@output, qq(\n<a href="$href" style='color: $colour;'>$text</a>));
   }
   join('', @output) . "</td></tr>\n";

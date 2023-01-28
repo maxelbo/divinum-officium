@@ -78,7 +78,7 @@ sub setuptable {
   $title =~ s/setupparameters/Options/i;
 
   my $output = << "PrintTag";
-<H1 ALIGN=CENTER><FONT COLOR=MAROON><B><I>$title</I></B></FONT></H1>
+<h1 style='text-align: center; color: var(--maroon)'><b><i>$title</i></b></h1>
 <TABLE WIDTH=75% BORDER=0 ALIGN=CENTER><TR><TD>
 <TABLE BORDER=2 CELLPADDING=5 ALIGN=CENTER BACKGROUND=\"$htmlurl/horasbg.jpg\">
 PrintTag

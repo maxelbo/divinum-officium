@@ -69,7 +69,7 @@ binmode(STDOUT, ':encoding(utf-8)');
 #*** get parameters
 getini('horas');    #files, colors
 @dayname = split('=', $dayname);
-$daycolor = ($dayname =~ /feria/i) ? "black" : ($dayname =~ /Sabbato|Vigil/i) ? "blue" : "red";
+$daycolor = ($dayname =~ /feria/i) ? "black" : ($dayname =~ /Sabbato|Vigil/i) ? "var(--blue)" : "var(--red)";
 $command = $hora = strictparam('command');
 
 $setupsave = strictparam('setup');
@@ -129,8 +129,8 @@ if (!$only) {
 }
 print "</TABLE><BR>\n";
 print "<A HREF=# onclick=\"window.close()\">Close</A>";
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT></P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
 print "</FORM></BODY></HTML>";
 
 #*** javascript functions

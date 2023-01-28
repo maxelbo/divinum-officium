@@ -181,12 +181,12 @@ sub resolve_refs {
     if ($line =~ /\s*\!\[\:(.*?)\:\]/) {
       $line = $1;
       my $cfont = $redfont;
-      $cfont =~ s/red/blue/i;
+      $cfont =~ s/FireBrick/SteelBlue/i;
       $line = setfont($cfont, $line);
     } elsif ($line =~ /^\s*\!\!\!(.*)/s) {
       $line = $1;
       my $cfont = $redfont;
-      $cfont =~ s/red/black/i;
+      $cfont =~ s/FireBrick/black/i;
       $line = setfont($cfont, $line);
     }
 

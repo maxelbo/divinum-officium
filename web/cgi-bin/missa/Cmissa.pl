@@ -146,7 +146,7 @@ $title = "Sancta Missa Comparison";
 #generate HTML
 htmlHead($title, 2);
 print << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg" onload="startup();">
+<BODY VLINK=$visitedlink LINK=$link onload="startup();">
 <script>
 // https redirect
 if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
@@ -186,7 +186,7 @@ if ($command =~ /setup(.*)/is) {
   headline($head);
   print << "PrintTag";
 <TABLE BORDER=0 WIDTH=80% ALIGN=CENTER><TR>
-<TD ALIGN=CENTER><FONT COLOR=MAROON>$version1</FONT></TD><TD ALIGN=CENTER><FONT COLOR=MAROON>$version2</FONT></TD>
+<TD ALIGN=CENTER><FONT COLOR=var(--maroon)>$version1</FONT></TD><TD ALIGN=CENTER><FONT COLOR=var(--maroon)>$version2</FONT></TD>
 </TR></TABLE>
 PrintTag
   ordo();
@@ -245,8 +245,8 @@ PrintTag
 }
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT><\P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT><\P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT><\P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT><\P>\n"; }
 $command =~ s/(pray|setup)//ig;
 print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=setupm VALUE="$setupsave">

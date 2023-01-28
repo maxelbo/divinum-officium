@@ -174,8 +174,8 @@ $only = 1; # single-column
 ordo();
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT></P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
 
 #*** hedline($head) prints headlibe for main and pray
 sub headline {
@@ -206,7 +206,7 @@ $date1
 <br />
 <FONT COLOR=$daycolor>$headline<BR></FONT>
 $comment<BR>
-<a href="$date1-9-Missa.html"><FONT COLOR=MAROON SIZE=+1><B><I>$head</I></B></FONT></a>
+<a href="$date1-9-Missa.html" style="color: var(--maroon)"><FONT SIZE=+1><b><i>$head</i></b></FONT></a>
 </P>
 PrintTag
 }

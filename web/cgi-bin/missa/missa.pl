@@ -142,7 +142,7 @@ $title = "Sancta Missa";
 #generate HTML
 htmlHead($title, 2);
 print << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg" onload="startup();">
+<BODY VLINK=$visitedlink LINK=$link onload="startup();">
 <script>
 // https redirect
 if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com" || location.hostname == "www.divinumofficium.com")) {
@@ -198,7 +198,7 @@ if ($pmode =~ /(main|missa)/i) {
 <P ALIGN=CENTER><FONT SIZE=+1><I>
 <LABEL FOR=rubrics>Rubrics : </LABEL><INPUT ID=rubrics TYPE=CHECKBOX NAME='rubrics' $crubrics Value=1  onclick="parchange()">
 &nbsp;&nbsp;&nbsp;
-<A HREF=# onclick="hset('$ctext');"><FONT COLOR=blue>$ctext</FONT></A>
+<a href=# style='color: var(--blue)' onclick="hset('$ctext');">$ctext</a>
 &nbsp;&nbsp;&nbsp;
 <LABEL FOR=solemn>Solemn : </LABEL><INPUT ID=solemn TYPE=CHECKBOX NAME='solemn' $csolemn Value=1 onclick="parchange()">
 </I></P>
@@ -223,13 +223,13 @@ PrintTag
   }
   print option_selector("Votive", "parchange();", $votive, @votive );
   print "</div>\n";
-  print qq(<P ALIGN=CENTER><FONT SIZE=+1>\n<A HREF=# onclick="hset('Propers')">$propname</A>\n</FONT></P>\n);
+  print qq(<P ALIGN=CENTER><FONT SIZE=+1>\n<a href=# onclick="hset('Propers')">$propname</a>\n</FONT></P>\n);
   print "<P ALIGN=CENTER><FONT SIZE=+1>\n" . bottom_links_menu() . "</FONT>\n</P>\n";
 }    
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT></P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
 $command =~ s/(pray|setup)//ig;
 print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=setupm VALUE="$setupsave">

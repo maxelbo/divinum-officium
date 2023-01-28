@@ -71,9 +71,9 @@ $height = ($t > 300) ? $screenheight - 100 : 3 * $screenheight / 4;
 # prints the requested item from prayers hash as popup
 htmlHead($title, 2);
 print << "PrintTag";
-<BODY VLINK=$visitedlink LINK=$link BACKGROUND="$htmlurl/horasbg.jpg" onload="setsize()">
+<BODY VLINK=$visitedlink LINK=$link onload="setsize()">
 <FORM ACTION="popup.pl" METHOD=post TARGET=_self>
-<H3 ALIGN=CENTER><FONT COLOR=MAROON><B><I>$title</I></B></FONT></H3>
+<h3 style='text-align: center; color: var(--maroon)'><b><i>$title</i></b></h3>
 <P ALIGN=CENTER><BR>
 <TABLE BORDER=0 WIDTH=90% ALIGN=CENTER CELLPADDING=8 CELLSPACING=$border BGCOLOR='maroon'>
 <TR>
@@ -89,8 +89,8 @@ if (!$only) {
 }
 print "</TABLE><BR>\n";
 print "<A HREF=# onclick=\"window.close()\">Close</A>";
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT><\P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT><\P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT><\P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT><\P>\n"; }
 print "</FORM></BODY></HTML>";
 
 #*** javascript functions

@@ -97,7 +97,7 @@ sub mainpage {
     <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
   </tr>
   <tr>
-    <td style="color: red"></td>
+    <td style="color: var(--red)"></td>
     <td>Commune Sanctorum</td>
     <td>Proprium Sanctorum</td>
   </tr>
@@ -153,8 +153,8 @@ PrintTag
 #common end for programs
 sub bodyend { 
   my $output = '';
-  if ($error) { $output .= par_c("<FONT COLOR=red>$error</FONT>"); }
-  if ($debug) { $output .= par_c("<FONT COLOR=blue>$debug</FONT>"); }
+  if ($error) { $output .= par_c("<FONT COLOR=var(--red)>$error</FONT>"); }
+  if ($debug) { $output .= par_c("<FONT COLOR=var(--blue)>$debug</FONT>"); }
   $output .= << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=expandnum VALUE="">
 <INPUT TYPE=HIDDEN NAME=popup VALUE="">

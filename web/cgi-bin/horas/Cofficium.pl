@@ -226,7 +226,7 @@ PrintTag
     <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
   </tr>
   <tr>
-    <td style="color: red">$version</td>
+    <td style="color: var(--red)">$version</td>
     <td>Commune Sanctorum</td>
     <td>Proprium Sanctorum</td>
   </tr>
@@ -266,8 +266,8 @@ PrintTag
 }
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=red>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=blue>$debug</FONT></P>\n"; }
+if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
+if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
 $command =~ s/(pray|setup)//ig;
 print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=setup VALUE="$setupsave">

@@ -24,14 +24,24 @@ sub vernaculars {
 sub liturgical_color {
   $_ = shift;
   my($commune) = @_;
-  return '#00639b' if ($commune && $commune =~ /(C1[0-9])/); # blue
-  return '#d94b58' if (/(Vigilia Pentecostes|Quattuor Temporum Pentecostes|Martyr)/i); # red
-  return '#8281a0' if (/(Defunctorum|Parasceve|Morte)/i); # grey
-  return '#333333' if (/^In Vigilia Ascensionis/); # black
-  return '#9a77cf' if (/(Vigilia|Quattuor|Rogatio|Passion|Palmis|gesim|(?:Majoris )?Hebdomadæ(?: Sanctæ)?|Sabbato Sancto|Dolorum|Ciner|Adventus)/i); # purple
-  return '#333333' if (/(Conversione|Dedicatione|Cathedra|oann|Pasch|Confessor|Ascensio|Cena)/i); # black
-  return '#009192' if (/(Pentecosten|Epiphaniam|post octavam)/i); # green
-  return '#d94b58' if (/(Pentecostes|Evangel|Innocentium|Sanguinis|Cruc|Apostol)/i); # red
-  return '#333333' # black
+  # Calendar color palette (the global color palette is found in @/www/style/global.css)
+  # Blue
+  return '#00639b' if ($commune && $commune =~ /(C1[0-9])/);
+  # Red
+  return '#d94b58' if (/(Vigilia Pentecostes|Quattuor Temporum Pentecostes|Martyr)/i);
+  # Gray
+  return '#8281a0' if (/(Defunctorum|Parasceve|Morte)/i);
+  # Black
+  return '#333333' if (/^In Vigilia Ascensionis/);
+  # Purple
+  return '#9a77cf' if (/(Vigilia|Quattuor|Rogatio|Passion|Palmis|gesim|(?:Majoris )?Hebdomadæ(?: Sanctæ)?|Sabbato Sancto|Dolorum|Ciner|Adventus)/i);
+  # Black
+  return '#333333' if (/(Conversione|Dedicatione|Cathedra|oann|Pasch|Confessor|Ascensio|Cena)/i);
+  # Green
+  return '#5d9c60' if (/(Pentecosten|Epiphaniam|post octavam)/i);
+  # Red
+  return '#d94b58' if (/(Pentecostes|Evangel|Innocentium|Sanguinis|Cruc|Apostol)/i);
+  # Black
+  return '#333333'
 }
 1;
