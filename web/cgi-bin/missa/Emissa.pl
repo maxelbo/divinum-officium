@@ -70,6 +70,7 @@ require "$Bin/../horas/horascommon.pl";
 require "$Bin/../horas/dialogcommon.pl";
 require "$Bin/../horas/webdia.pl";
 require "$Bin/../../../standalone/tools/epubgen2/Ewebdia.pl";
+require "$Bin/../../../standalone/tools/epubgen2/headline.pl";
 require "$Bin/ordo.pl";
 require "$Bin/propers.pl";
 
@@ -157,18 +158,14 @@ $setupsave =~ s/\r*\n*//g;
 $setupsave =~ s/\"/\~24/g;
 precedence();    #fills our hashes et variables
 
-# prepare title
-$daycolor = liturgical_color($dayname[1], $commune);
-build_comment_line();
-
 #prepare main pages
 $title = "Sancta Missa";
+$head     = $title;
 
 $command =~ s/(pray|change|setup)//ig;
-$title    = "Sancta Missa";
-$head     = $title;
 $headline = setheadline();
-headline($head);
+
+headline();
 
 $only = 1; # single-column
 ordo();
@@ -177,55 +174,7 @@ ordo();
 if ($error) { print "<p class='error'>$error<\p>\n"; }
 if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 
-#*** hedline($head) prints headlibe for main and pray
-sub headline {
-    my $head = shift;
-    $headline =~ s{!(.*)}{<FONT SIZE=1>$1</FONT>}s;
-  my $daten = prevnext($date1, 1);
-  my $datep = prevnext($date1, -1);
-    print << "PrintTag";
-<P ALIGN=CENTER><a href="$datep-9-Missa.html">&darr;</a>
-$date1
-<a href="$daten-9-Missa.html">&uarr;</a>
-<br />
-<a href="$date1-1-Matutinum.html">Matutinum</a>
-&nbsp;&nbsp;
-<a href="$date1-2-Laudes.html">Laudes</a>
-&nbsp;&nbsp;
-<a href="$date1-3-Prima.html">Prima</a>
-&nbsp;&nbsp;
-<a href="$date1-4-Tertia.html">Tertia</a>
-<br />
-<a href="$date1-5-Sexta.html">Sexta</a>
-&nbsp;&nbsp;
-<a href="$date1-6-Nona.html">Nona</a>
-&nbsp;&nbsp;
-<a href="$date1-7-Vespera.html">Vespera</a>
-&nbsp;&nbsp;
-<a href="$date1-8-Completorium.html">Completorium</a>
-<br />
-<FONT COLOR=$daycolor>$headline<BR></FONT>
-$comment<BR>
-<a href="$date1-9-Missa.html" style="color: var(--maroon)"><FONT SIZE=+1><b><i>$head</i></b></FONT></a>
-</P>
-PrintTag
-}
-
-sub prevnext {
-  my $date1 = shift;
-  my $inc = shift;
-
-  $date1 =~ s/\//\-/g;
-  my ($month,$day,$year) = split('-',$date1);
-
-  my $d= date_to_days($day,$month-1,$year);
-
-  my @d = days_to_date($d + $inc);
-  $month = $d[4]+1;
-  $day = $d[3];
-  $year = $d[5]+1900;
-  return sprintf("%02i-%02i-%04i", $month, $day, $year);
-}
+print "</div></body></html>";
 
 # the sub is called from htmlhead
 sub horasjs {
