@@ -244,9 +244,13 @@ for ($i = 1; $i <= 12; $i++) {
   if ($i < 12) { print "&nbsp;&nbsp;&nbsp;\n" }
 }
 print << "PrintTag";
-<P ALIGN=CENTER>
-<TABLE BORDER=$border WIDTH=90% CELLPADDING=3>
-<TR><TH>Dies</TH><TH>de Tempore</TH><TH>Sanctorum</TH><TH>d.h.</TH></TR>
+<table class="kalendar-table" border=$border cellpadding=3>
+  <tr>
+    <th>Dies</th>
+    <th>de Tempore</th>
+    <th>Sanctorum</th>
+    <th>d.h.</th>
+  </tr>
 PrintTag
 $to = $monthlength[$kmonth - 1];
 if ($kmonth == 2 && leapyear($kyear)) { $to++; }
@@ -262,21 +266,24 @@ for ($cday = 1; $cday <= $to; $cday++) {
   my $c1 = join('<BR>', @c1);
   my $c2 = join('<BR>', @c2);
   print << "PrintTag";
-<TR><TD ALIGN=CENTER><A HREF=# onclick="callbrevi('$date1');">$d1</A></TD>
-<TD>$c1</TD>
-<TD>$c2</TD>
-<TD ALIGN=CENTER>$daynames[$dayofweek]</TD>
-</TR>
+<tr>
+  <td>
+    <a href=# onclick="callbrevi('$date1');">$d1</a>
+  </td>
+  <td>$c1</td>
+  <td>$c2</td>
+  <td>$daynames[$dayofweek]</td>
+</tr>
 PrintTag
 }
 print << "PrintTag";
-</TABLE><BR>
+</table>
 PrintTag
 print htmlInput('version1', $ver[0], 'options', 'versions', , "document.forms[0].submit()");
 if ($compare) {
   print htmlInput('version2', $ver[1], 'options', 'versions', , "document.forms[0].submit()");
 }
-print "<P ALIGN=CENTER>\n" . bottom_links_menu() . "</P>\n";
+print "<footer>\n" . bottom_links_menu() . "</footer>\n";
 
 # $testmode = 'Regular' unless $testmode;
 # print option_selector("testmode", "document.forms[0].submit();", $testmode, qw(Regular Seasonal));

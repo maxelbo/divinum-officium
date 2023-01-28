@@ -216,6 +216,23 @@ sub htmlHead {
         padding: 0;
       }
 
+      .kalendar-table {
+        margin: 1rem auto 3rem;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      .kalendar-table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+      }
+
+      .kalendar-table td:first-child,
+      .kalendar-table td:last-child {
+        text-align: center;
+      }
+
       .selectables {
         display: flex;
         flex-direction: column;
@@ -279,7 +296,7 @@ sub htmlInput {
     if (!$width || $width == 0) { $width = 3; }
     my $jsfunc = '';
     if ($parfunc) { $jsfunc = "onchange=\"$parfunc;\""; }
-    $output .= "<input type=text name=\'$parname\' id=\'$parname\' $jsfunc size=$width value=\'$parvalue\'>\n";
+    $output .= "<input type=text NAME=\'$parname\' id=\'$parname\' $jsfunc size=$width value=\'$parvalue\'>\n";
   } elsif ($parmode =~ /^text/i) {
     my @size = split('x', $parpar);
     if (@size < 2) { @size = (3, 12); }
@@ -859,6 +876,6 @@ sub horas_menu {
 }
 
 sub bottom_links_menu {
-  map { "<a href=\"../../www/horas/Help/" . lcfirst($_) . ".html\" target=\"_blank\">$_</a>\n";} 
-            qw(Versions Credits Download Rubrics Technical Help);
+  join('', map { "<a href=\"../../www/horas/Help/" . lcfirst($_) . ".html\" target=\"_blank\">$_</a>\n";} 
+            qw(Versions Credits Download Rubrics Technical Help));
 }
