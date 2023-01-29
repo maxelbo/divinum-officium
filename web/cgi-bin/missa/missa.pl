@@ -165,7 +165,7 @@ if ($command =~ /setup(.*)/is) {
   headline($head);
 
   #eval($setup{'parameters'});
-  $background = ($whitebground) ? "BGCOLOR=\"white\"" : "BACKGROUND=\"$htmlurl/horasbg.jpg\"";
+  $background = ($whitebground) && "style=' background-color: #ffffff;'";
   ordo();
   print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=expandnum VALUE="">
@@ -177,12 +177,7 @@ PrintTag
   $headline = setheadline();
   headline($title);
   print << "PrintTag";
-<P ALIGN=CENTER>
-<TABLE BORDER=0 HEIGHT=$height><TR>
-<TD><IMG SRC="$htmlurl/missa.jpg" HEIGHT=$height></TD>
-</TR></TABLE>
-<BR>
-</P>
+  <img class='missa-image' src="$htmlurl/missa.png">
 PrintTag
 }
 
@@ -228,8 +223,8 @@ PrintTag
 }    
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
+if ($error) { print "<p class='error'>$error<\p>\n"; }
+if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 $command =~ s/(pray|setup)//ig;
 print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=setupm VALUE="$setupsave">
@@ -270,7 +265,9 @@ sub headline {
     </a>
     <label for=date class=offscreen>Date</label>
     <input type=text id=date name=date value="$date1" size=10>
-    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <button class="date-button" type=submit value=" " onclick="parchange()">
+      &#10016
+    </button>
     <a href=# onclick="prevnext(1)">
       <span class="material-symbols-outlined">
         arrow_forward

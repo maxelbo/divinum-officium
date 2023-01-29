@@ -24,14 +24,16 @@ PrintTag
     <a href=# onclick="callmissa()">Sancta Missa</a>
   </div>
   <div class="date">
-    <a href=# onclick="prevnext(-1)">
+    <a href=# onclick="prevnext(1)">
       <span class="material-symbols-outlined">
         arrow_back
       </span>
     </a>
     <label for=date class=offscreen>Date</label>
     <input type=text id=date name=date value="$date1" size=10>
-    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <button class="date-button" type=submit value=" " onclick="parchange()">
+      &#10016
+    </button>
     <a href=# onclick="prevnext(1)">
       <span class="material-symbols-outlined">
         arrow_forward
@@ -153,8 +155,8 @@ PrintTag
 #common end for programs
 sub bodyend { 
   my $output = '';
-  if ($error) { $output .= par_c("<FONT COLOR=var(--red)>$error</FONT>"); }
-  if ($debug) { $output .= par_c("<FONT COLOR=var(--blue)>$debug</FONT>"); }
+  if ($error) { $output .= "<p class='error'>$error</p>\n"; }
+  if ($debug) { $output .= "<p class='debug'>$debug</p>\n"; }
   $output .= << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=expandnum VALUE="">
 <INPUT TYPE=HIDDEN NAME=popup VALUE="">

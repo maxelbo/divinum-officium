@@ -75,7 +75,7 @@ print << "PrintTag";
 <FORM ACTION="popup.pl" METHOD=post TARGET=_self>
 <h3 style='text-align: center; color: var(--maroon)'><b><i>$title</i></b></h3>
 <P ALIGN=CENTER><BR>
-<TABLE BORDER=0 WIDTH=90% ALIGN=CENTER CELLPADDING=8 CELLSPACING=$border BGCOLOR='maroon'>
+<TABLE BORDER=0 WIDTH=90% ALIGN=CENTER CELLPADDING=8 CELLSPACING=$border BGCOLOR='var(--maroon)'>
 <TR>
 PrintTag
 $text =~ s/\_/ /g;
@@ -88,9 +88,9 @@ if (!$only) {
   print "<TD $background VALIGN=TOP>" . setfont($blackfont, $text) . "</TD></TR>\n";
 }
 print "</TABLE><BR>\n";
-print "<A HREF=# onclick=\"window.close()\">Close</A>";
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT><\P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT><\P>\n"; }
+print "<a href=# onclick=\"window.close()\">Close</a>";
+if ($error) { print "<p class='error'>$error<\p>\n"; }
+if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 print "</FORM></BODY></HTML>";
 
 #*** javascript functions

@@ -30,6 +30,9 @@ sub htmlHead {
     <title>$title</title>
     <link rel="stylesheet" href="../../www/style/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght\@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
     <style>
       
       /* https://www.30secondsofcode.org/css/s/offscreen/ */
@@ -83,7 +86,7 @@ sub htmlHead {
       .main-title h1 {
         color: var(--maroon);
         font-weight: bold; 
-        font-style: italic;
+         text-transform: uppercase;
         margin: 0;
       }
 
@@ -116,6 +119,8 @@ sub htmlHead {
       .date-button {
         width: 1.5rem;
         height: 1.5rem;
+        color: var(--red);
+        line-height: 1.2rem;
         background-color: var(--background);
         border-radius: 0.2rem;
       }
@@ -223,10 +228,24 @@ sub htmlHead {
         padding: 0;
       }
 
+      .missa-image {
+        display: flex; 
+        justify-content: center; 
+        width: 100%; 
+        max-width: 400px; 
+        padding: 0 1rem; 
+        margin: 1rem auto 2rem;
+      }
+
       .kalendar-table {
         margin: 1rem auto 3rem;
         width: 100%;
         table-layout: fixed;
+      }
+
+      .kalendar-table th:first-child,
+      .kalendar-table th:last-child {
+        width: 50px;
       }
 
       .kalendar-table td {
@@ -238,6 +257,8 @@ sub htmlHead {
       .kalendar-table td:first-child,
       .kalendar-table td:last-child {
         text-align: center;
+        width: 26px;
+        padding: 0;
       }
 
       .selectables {
@@ -256,6 +277,7 @@ sub htmlHead {
           gap: 1rem;
           margin: 2rem auto 1rem;
           width: 550px;
+          margin: 1rem auto 2rem
         }
 
         .main-menu-pc .date {
@@ -886,3 +908,4 @@ sub bottom_links_menu {
   join('', map { "<a href=\"../../www/horas/Help/" . lcfirst($_) . ".html\" target=\"_blank\">$_</a>\n";} 
             qw(Versions Credits Download Rubrics Technical Help));
 }
+

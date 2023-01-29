@@ -174,8 +174,8 @@ $only = 1; # single-column
 ordo();
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
+if ($error) { print "<p class='error'>$error<\p>\n"; }
+if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 
 #*** hedline($head) prints headlibe for main and pray
 sub headline {

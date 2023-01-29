@@ -210,7 +210,7 @@ if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com
     location.replace(`https:\${location.href.substring(location.protocol.length)}`);
 }
 </script>
-<FORM ACTION="kalendar.pl" METHOD=post TARGET=_self>
+< ACTION="kalendar.pl" METHOD=post TARGET=_self>
 <INPUT TYPE=HIDDEN NAME=setup VALUE="$setupsave">
 <INPUT TYPE=HIDDEN NAME=date1 VALUE="$date1">
 <INPUT TYPE=HIDDEN NAME=kmonth VALUE=$kmonth>
@@ -287,9 +287,9 @@ print "<footer>\n" . bottom_links_menu() . "</footer>\n";
 
 # $testmode = 'Regular' unless $testmode;
 # print option_selector("testmode", "document.forms[0].submit();", $testmode, qw(Regular Seasonal));
-if ($savesetup > 1) { print "&nbsp;&nbsp;&nbsp;<A HREF=# onclick=\"readings();\">Readings</A>"; }
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
+if ($savesetup > 1) { print "&nbsp;&nbsp;&nbsp;<a href=# onclick=\"readings()\">Readings</a>"; }
+if ($error) { print "<p class='error'>$error<\p>\n"; }
+if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 print << "PrintTag";
 </FORM>
 </BODY></HTML>

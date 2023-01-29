@@ -112,7 +112,7 @@ print << "PrintTag";
 <FORM>
 <H3 ALIGN=CENTER><FONT COLOR=MAROON><B><I>$title</I></B></FONT></H3>
 <P ALIGN=CENTER><BR>
-<TABLE BORDER=0 WIDTH=90% ALIGN=CENTER CELLPADDING=8 CELLSPACING=$border BGCOLOR='maroon'>
+<table BORDER=0 WIDTH=90% ALIGN=CENTER CELLPADDING=8 CELLSPACING=$border BGCOLOR='maroon'>
 <TR>
 PrintTag
 $text =~ s/\_/ /g;
@@ -127,11 +127,11 @@ if (!$only) {
   if ($lang2 =~ /Latin/i) { $text = spell_var($text); }
   print "<TD $background VALIGN=TOP>" . setfont($blackfont, $text) . "</TD></TR>\n";
 }
-print "</TABLE><BR>\n";
-print "<A HREF=# onclick=\"window.close()\">Close</A>";
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
-print "</FORM></BODY></HTML>";
+print "</table><BR>\n";
+print "<a href=# onclick=\"window.close()\">Close</a>";
+if ($error) { print "<p class='error'>$error</p>\n"; }
+if ($debug) { print "<p class='debug'>$debug</p>\n"; }
+print "</form></body></html>";
 
 #*** javascript functions
 sub horasjs {

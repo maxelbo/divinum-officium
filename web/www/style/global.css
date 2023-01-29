@@ -20,6 +20,7 @@ html {
   width: 100%;
   padding: 0.5rem;
   color: var(--black);
+  font-family: "Cormorant Garamond", serif;
 }
 
 body {
@@ -36,6 +37,19 @@ body {
 
 a {
   color: var(--blue);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--black);
+}
+
+table p {
+  font-size: 1.8rem;
 }
 
 input[type="text"],
@@ -69,6 +83,16 @@ footer {
   max-width: 900px;
 }
 
+.error {
+  text-align: center;
+  color: var(--red);
+}
+
+.debug {
+  text-align: center;
+  color: var(--blue);
+}
+
 @media (min-width: 750px) {
   .for-sp {
     display: none;
@@ -76,5 +100,9 @@ footer {
 
   .for-pc {
     display: block;
+  }
+
+  table p {
+    font-size: 1.6rem;
   }
 }

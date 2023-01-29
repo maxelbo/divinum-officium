@@ -182,7 +182,7 @@ if ($command =~ /setup(.*)/is) {
   horas($command);
   print << "PrintTag";
 <P ALIGN=CENTER>
-<INPUT TYPE=SUBMIT NAME='button' VALUE='$command persolut.' onclick="okbutton();">
+<INPUT TYPE=SUBMIT NAME='button' VALUE='$command persolut.' onclick="okbutton()">
 </P>
 <INPUT TYPE=HIDDEN NAME=expandnum VALUE="">
 <INPUT TYPE=HIDDEN NAME=popup VALUE="">
@@ -198,7 +198,7 @@ PrintTag
   print << "PrintTag";
 <div class="for-sp">
   <div class="image-table-sp">
-    <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+    <img src="$htmlurl/psalterium.png" height=$height2 alt="psalterium">
   </div>
 </div>
 <div class="for-pc">
@@ -210,20 +210,20 @@ PrintTag
   </tr>
   <tr>
     <td rowspan=2>
-      <img src="$htmlurl/breviarium.jpg" height=$height alt="breviarium">
+      <img src="$htmlurl/breviarium.png" height=$height alt="breviarium">
       </td>
     <td>
-      <img src="$htmlurl/psalterium.jpg" height=$height2 alt="psalterium">
+      <img src="$htmlurl/psalterium.png" height=$height2 alt="psalterium">
     </td>
     <td>
-      <img src="$htmlurl/tempore.jpg" height=$height2 alt="tempore">
+      <img src="$htmlurl/tempore.png" height=$height2 alt="tempore">
     </td>
   </tr>
   <tr>
     <td>
-    <img src="$htmlurl/commune.jpg" height=$height2 alt="commune"></td>
+    <img src="$htmlurl/commune.png" height=$height2 alt="commune"></td>
     <td height=50%>
-    <img src="$htmlurl/sancti.jpg" height=$height2 alt="sancti"></td>
+    <img src="$htmlurl/sancti.png" height=$height2 alt="sancti"></td>
   </tr>
   <tr>
     <td style="color: var(--red)">$version</td>
@@ -266,8 +266,8 @@ PrintTag
 }
 
 #common end for programs
-if ($error) { print "<P ALIGN=CENTER><FONT COLOR=var(--red)>$error</FONT></P>\n"; }
-if ($debug) { print "<P ALIGN=center><FONT COLOR=var(--blue)>$debug</FONT></P>\n"; }
+if ($error) { print "<p class='error'>$error<\p>\n"; }
+if ($debug) { print "<p class='debug'>$debug<\p>\n"; }
 $command =~ s/(pray|setup)//ig;
 print << "PrintTag";
 <INPUT TYPE=HIDDEN NAME=setup VALUE="$setupsave">
@@ -324,7 +324,9 @@ sub headline {
     </a>
     <label for=date class=offscreen>Date</label>
     <input type=text id=date name=date value="$date1" size=10>
-    <button class="date-button" type=submit value=" " onclick="parchange()"></button>
+    <button class="date-button" type=submit value=" " onclick="parchange()">
+      &#10016
+    </button>
     <a href=# onclick="prevnext(1)">
       <span class="material-symbols-outlined">
         arrow_forward
