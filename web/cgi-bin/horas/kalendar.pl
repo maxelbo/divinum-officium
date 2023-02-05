@@ -212,7 +212,7 @@ if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com
 </script>
 <FORM ACTION="kalendar.pl" METHOD=post TARGET=_self>
 <INPUT TYPE=HIDDEN NAME=setup VALUE="$setupsave">
-<INPUT TYPE=HIDDEN NAME=date1 VALUE="$date1">7
+<INPUT TYPE=HIDDEN NAME=date1 VALUE="$date1">
 <INPUT TYPE=HIDDEN NAME=kmonth VALUE=$kmonth>
 <INPUT TYPE=HIDDEN NAME=kyear VALUE=$kyear>
 <INPUT TYPE=HIDDEN NAME=date VALUE="$odate">
