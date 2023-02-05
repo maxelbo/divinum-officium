@@ -219,7 +219,7 @@ PrintTag
   print option_selector("Votive", "parchange();", $votive, @votive );
   print "</div>\n";
   print qq(<P ALIGN=CENTER><FONT SIZE=+1>\n<a href=# onclick="hset('Propers')">$propname</a>\n</FONT></P>\n);
-  print "<P ALIGN=CENTER><FONT SIZE=+1>\n" . bottom_links_menu() . "</FONT>\n</P>\n";
+  print "<footer>" . bottom_links_menu() . "</footer>\n";
 }    
 
 #common end for programs

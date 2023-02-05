@@ -1,6 +1,7 @@
 :root {
   /* Color Palette (the calendar colors are found in @/web/cgi-bin/DivinumOfficium/Main.pm) */
   --black: #333333;
+  --white: #ffffff;
   --background: #f5f0e5;
   --grey: #8281a0;
   --red: #d94b58;
@@ -8,6 +9,9 @@
   --green: #5d9c60;
   --purple: #8c6bb1;
   --maroon: #844444;
+
+  /* Width */
+  --max-width: 1060px;
 }
 
 html,
@@ -37,6 +41,10 @@ body {
 
 a {
   color: var(--blue);
+}
+
+h4 {
+  font-weight: 700;
 }
 
 nav {
@@ -91,6 +99,36 @@ footer {
 .debug {
   text-align: center;
   color: var(--blue);
+}
+
+.info-section {
+  width: 90%;
+  border: 0;
+  background-color: var(--white);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.info-section h1 {
+  margin: 2rem auto 1rem;
+}
+
+.info-section h1:first-child {
+  margin: 0 auto 1rem;
+}
+
+.info-section p {
+  font-size: 16px;
+}
+
+.info-divider {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.info-signature {
+  text-align: center;
 }
 
 @media (min-width: 750px) {

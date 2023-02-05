@@ -20,7 +20,7 @@ sub htmlHead {
   print "Content-type: text/html; charset=utf-8\n\n";
   print << "PrintTag";
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<HTML>
   <head>
     <meta name="resource-type" content="document">
     <meta name="description" content="Divine Office">
@@ -28,8 +28,8 @@ sub htmlHead {
     <meta name="copyright" content="Like GNU">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>$title</title>
-    <link rel="stylesheet" href="../../www/style/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../../www/style/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght\@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
@@ -237,6 +237,34 @@ sub htmlHead {
         margin: 1rem auto 2rem;
       }
 
+      .years-menu {
+        display: flex;
+        gap: 0.3rem 1rem;
+        flex-flow: wrap;
+        justify-content:center;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .kalendar-title {
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .kalendar-title span {
+        color: var(--maroon);
+        font-weight: bold;
+      }
+
+      .month-menu {
+        display: flex;
+        gap: 0.5rem 1rem;
+        justify-content: center;
+        padding: 0 1rem;
+        flex-wrap: wrap;
+      }
+
       .kalendar-table {
         margin: 1rem auto 3rem;
         width: 100%;
@@ -269,6 +297,10 @@ sub htmlHead {
         margin: 1rem 4rem 2rem;
         text-align: center;
       }
+      
+      .compare {
+        flex-direction: row;
+      }
 
       \@media (min-width: 750px) {
         
@@ -282,6 +314,10 @@ sub htmlHead {
 
         .main-menu-pc .date {
           gap: 0.5rem;
+        }
+
+        .kalendar-title {
+          font-size: 16px;
         }
         
         .selectables {
