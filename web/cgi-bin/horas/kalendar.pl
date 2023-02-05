@@ -210,9 +210,9 @@ if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com
     location.replace(`https:\${location.href.substring(location.protocol.length)}`);
 }
 </script>
-< ACTION="kalendar.pl" METHOD=post TARGET=_self>
+<FORM ACTION="kalendar.pl" METHOD=post TARGET=_self>
 <INPUT TYPE=HIDDEN NAME=setup VALUE="$setupsave">
-<INPUT TYPE=HIDDEN NAME=date1 VALUE="$date1">
+<INPUT TYPE=HIDDEN NAME=date1 VALUE="$date1">7
 <INPUT TYPE=HIDDEN NAME=kmonth VALUE=$kmonth>
 <INPUT TYPE=HIDDEN NAME=kyear VALUE=$kyear>
 <INPUT TYPE=HIDDEN NAME=date VALUE="$odate">
@@ -222,27 +222,25 @@ if (location.protocol !== 'https:' && (location.hostname == "divinumofficium.com
 <INPUT TYPE=HIDDEN NAME=compare VALUE="$compare">
 <INPUT TYPE=HIDDEN NAME=readings VALUE="0">
 
-<P ALIGN=CENTER>
 PrintTag
-
+print "<div class='years-menu'>";
 for (my $i = $kyear - 9; $i <= $kyear + 10; $i++) {
   $yn = sprintf("%04i", $i);
   if ($i == $year) {
-    print "<a href=# style='color: var(--maroon)' onclick=\"callbrevi();\">Hodie</a>&nbsp;&nbsp;&nbsp;\n";
+    print "<a href=# style='color: var(--maroon)' onclick=\"callbrevi();\">Hodie</a>\n";
   }
-  print "<a href=# onclick=\"setky($yn)\">$yn</a>&nbsp;&nbsp;&nbsp;\n";
+  print "<a href=# onclick=\"setky($yn)\">$yn</a>\n";
 }
-
-print "<BR><BR></FONT>\n";
+print "</div>\n";
+print "<div class='kalendar-title'>";
 print "$ver[0]"; print " / $ver[1]" if ($compare);
-print " : <span style='color: var(--maroon)'><b><i>$title</i></b></span>\n";
-print "<BR><BR>\n";
-
+print " : <span>$title</span></div>\n";
+print "<div class='month-menu'>";
 for ($i = 1; $i <= 12; $i++) {
   $mn = substr($monthnames[$i - 1], 0, 3);
   print "<a href=# onclick=\"setkm($i)\">$mn</a>\n";
-  if ($i < 12) { print "&nbsp;&nbsp;&nbsp;\n" }
 }
+print "</div>\n";
 print << "PrintTag";
 <table class="kalendar-table" border=$border cellpadding=3>
   <tr>
@@ -279,11 +277,13 @@ PrintTag
 print << "PrintTag";
 </table>
 PrintTag
+print "<div class='selectables compare'>";
 print htmlInput('version1', $ver[0], 'options', 'versions', , "document.forms[0].submit()");
 if ($compare) {
   print htmlInput('version2', $ver[1], 'options', 'versions', , "document.forms[0].submit()");
 }
-print "<footer>\n" . bottom_links_menu() . "</footer>\n";
+print "</div>\n";
+print "<footer>" . bottom_links_menu() . "</footer>\n";
 
 # $testmode = 'Regular' unless $testmode;
 # print option_selector("testmode", "document.forms[0].submit();", $testmode, qw(Regular Seasonal));
